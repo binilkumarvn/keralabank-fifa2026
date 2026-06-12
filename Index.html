@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Kerala Bank FIFA World Cup 2026 Predictor Challenge</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f4f6f9;
+margin:0;
+padding:20px;
+}
+
+.container{
+max-width:800px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 0 15px rgba(0,0,0,0.1);
+}
+
+h1{
+text-align:center;
+color:#004b87;
+}
+
+h2{
+color:#004b87;
+margin-top:25px;
+}
+
+input{
+width:100%;
+padding:10px;
+margin-top:5px;
+margin-bottom:15px;
+border:1px solid #ccc;
+border-radius:5px;
+box-sizing:border-box;
+}
+
+button{
+width:100%;
+padding:15px;
+background:#004b87;
+color:white;
+border:none;
+border-radius:5px;
+font-size:18px;
+cursor:pointer;
+}
+
+button:hover{
+background:#00345f;
+}
+
+.success{
+display:none;
+background:#d4edda;
+color:#155724;
+padding:15px;
+margin-top:20px;
+border-radius:5px;
+text-align:center;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>⚽ Kerala Bank FIFA World Cup 2026 Predictor Challenge</h1>
+
+<h2>Participant Details</h2>
+
+<input type="text" id="name" placeholder="Full Name" required>
+
+<input type="text" id="accountNo" placeholder="Account Number" required>
+
+<input type="tel" id="mobile" placeholder="Mobile Number" required>
+
+<input type="number" id="age" placeholder="Age" required>
+
+<input type="text" id="branch" placeholder="Branch" required>
+
+<input type="text" id="district" placeholder="District" required>
+
+<h2>Predict Top 4 Teams</h2>
+
+<input type="text" id="team1" placeholder="Top Team 1">
+
+<input type="text" id="team2" placeholder="Top Team 2">
+
+<input type="text" id="team3" placeholder="Top Team 3">
+
+<input type="text" id="team4" placeholder="Top Team 4">
+
+<h2>Predict World Cup Winner</h2>
+
+<input type="text" id="champion" placeholder="World Cup Winner">
+
+<h2>Predict Golden Boot Winner</h2>
+
+<input type="text" id="goldenBoot" placeholder="Golden Boot Winner">
+
+<button onclick="submitData()">Submit Prediction</button>
+
+<div class="success" id="success">
+✅ Thank you! Your prediction has been submitted successfully.
+</div>
+
+</div>
+
+<script>
+
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbypylWa3-lrM4mWL5rB0zLVIM9umq_p1Ixooh5NRiP0unJrEiS7HKSAfgRnBZgfZrkO/exec";
+
+function submitData(){
+
+const data = {
+
+name:document.getElementById("name").value,
+accountNo:document.getElementById("accountNo").value,
+mobile:document.getElementById("mobile").value,
+age:document.getElementById("age").value,
+branch:document.getElementById("branch").value,
+district:document.getElementById("district").value,
+
+team1:document.getElementById("team1").value,
+team2:document.getElementById("team2").value,
+team3:document.getElementById("team3").value,
+team4:document.getElementById("team4").value,
+
+champion:document.getElementById("champion").value,
+goldenBoot:document.getElementById("goldenBoot").value
+
+};
+
+fetch(SCRIPT_URL,{
+method:"POST",
+body:JSON.stringify(data)
+})
+.then(response=>response.text())
+.then(data=>{
+
+document.getElementById("success").style.display="block";
+
+document.querySelectorAll("input").forEach(i=>i.value="");
+
+window.scrollTo({
+top:document.body.scrollHeight,
+behavior:"smooth"
+});
+
+})
+.catch(error=>{
+alert("Submission Failed");
+console.log(error);
+});
+
+}
+
+</script>
+
+</body>
+</html>
